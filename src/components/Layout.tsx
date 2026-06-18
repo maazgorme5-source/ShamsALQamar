@@ -47,6 +47,7 @@ export default function Layout() {
   const handleEmailAuth = async (e: React.FormEvent) => {
     e.preventDefault();
     setAuthError('');
+
     try {
       if (isSignUpMode) {
         try {
@@ -280,7 +281,10 @@ export default function Layout() {
 
       {/* Floating Action Button */}
       <a href="https://wa.me/971521564550" target="_blank" rel="noopener noreferrer" 
-         className="fixed bottom-8 right-8 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform flex items-center justify-center">
+         className="fixed bottom-8 right-8 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform flex items-center justify-center group">
+        <span className="absolute right-full mr-3 bg-stone-900/80 text-stone-100 backdrop-blur-sm font-label-sm text-xs px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-2 group-hover:translate-x-0 whitespace-nowrap shadow-md pointer-events-none">
+          Chat with us
+        </span>
         <MessageSquare className="w-6 h-6" />
       </a>
 

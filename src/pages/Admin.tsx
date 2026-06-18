@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { collection, getDocs, updateDoc, doc, deleteDoc, addDoc, serverTimestamp, query, orderBy } from 'firebase/firestore';
 import { auth, db } from '../firebase';
 import { signInWithEmailAndPassword, onAuthStateChanged, signOut, User, createUserWithEmailAndPassword } from 'firebase/auth';
-import { UserCircle2, Calendar, Phone, Mail, Clock, RefreshCw, Trash2, CheckCircle, Plus } from 'lucide-react';
+import { UserCircle2, Calendar, Phone, Mail, Clock, RefreshCw, Trash2, CheckCircle, Plus, ChevronDown, ArrowLeft, ChevronsUpDown } from 'lucide-react';
 
 interface Booking {
   id: string;
@@ -22,7 +22,7 @@ interface Booking {
 export default function Admin() {
   const navigate = useNavigate();
   const [user, setUser] = useState<User | null>(null);
-  const [adminId, setAdminId] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(true);
   const [loginError, setLoginError] = useState('');
@@ -43,9 +43,8 @@ export default function Admin() {
   });
   const [openDropdownId, setOpenDropdownId] = useState<string | null>(null);
 
-  const EXPECTED_ADMIN_ID = 'shamsalqamar';
-  // Use a valid email format for Firebase
-  const ADMIN_EMAIL = 'shamsalqamar@admin.local';
+  const ADMIN_EMAIL = 'shamsalqamar90@gmail.com';
+  const ADMIN_PASS = 'ShamsBasit@22';
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -63,25 +62,33 @@ export default function Admin() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoginError('');
-    if (adminId !== EXPECTED_ADMIN_ID) {
-      setLoginError('Unauthorized Admin ID.');
+
+    if (email !== ADMIN_EMAIL || password !== ADMIN_PASS) {
+      setLoginError('Unauthorized Admin Credentials.');
       return;
     }
+
     try {
       setLoading(true);
       try {
-        await signInWithEmailAndPassword(auth, ADMIN_EMAIL, password);
+        await signInWithEmailAndPassword(auth, email, password);
       } catch (signInError: any) {
         if (signInError.code === 'auth/user-not-found' || signInError.code === 'auth/invalid-credential') {
           // Attempt to create the admin account if it doesn't exist yet
-          await createUserWithEmailAndPassword(auth, ADMIN_EMAIL, password);
+          await createUserWithEmailAndPassword(auth, email, password);
         } else {
           throw signInError;
         }
       }
     } catch (error: any) {
       console.error(error);
-      setLoginError(error.message || 'Login failed. Please check your credentials.');
+      if (error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential') {
+        setLoginError('Invalid email or password.');
+      } else if (error.code === 'auth/operation-not-allowed') {
+        setLoginError('Sign-in method disabled in Firebase. Email auth failed.');
+      } else {
+        setLoginError(error.message || 'Login failed. Please check your credentials.');
+      }
       setLoading(false);
     }
   };
@@ -174,10 +181,10 @@ export default function Admin() {
               </div>
             )}
             <input
-              type="text"
-              value={adminId}
-              onChange={(e) => setAdminId(e.target.value)}
-              placeholder="Admin ID"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email Address"
               className="w-full bg-transparent border-0 border-b border-primary/20 focus:border-secondary focus:ring-0 px-0 py-2 font-body-md text-primary transition-colors"
               required
             />
@@ -209,7 +216,13 @@ export default function Admin() {
             <h1 className="font-display-sm text-primary">Admin Dashboard</h1>
             <p className="font-body-md text-on-surface-variant">Manage your bookings and appointments</p>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-4">
+            <button
+              onClick={() => navigate('/')}
+              className="border border-outline-variant/50 text-on-surface-variant px-6 py-2 font-label-sm uppercase tracking-widest hover:bg-surface-variant hover:text-primary transition-colors flex items-center gap-2"
+            >
+              <ArrowLeft className="w-4 h-4" /> Back to Website
+            </button>
             <button
               onClick={() => setShowAddModal(true)}
               className="bg-primary text-on-primary px-6 py-2 font-label-sm uppercase tracking-widest hover:bg-secondary inline-flex items-center gap-2 transition-colors"
@@ -288,10 +301,13 @@ export default function Admin() {
                       <td className="p-4 text-right relative">
                         <button
                           onClick={() => setOpenDropdownId(openDropdownId === booking.id ? null : booking.id)}
-                          className="bg-secondary text-primary py-2 px-4 rounded-md text-sm font-label-sm min-w-32 text-center"
+                          className="bg-secondary text-primary py-2 px-4 rounded-md text-sm font-label-sm min-w-32 flex items-center justify-between mx-auto md:ml-auto md:mr-0"
                         >
-                          {booking.status === 'confirmed' ? 'Confirm' : 
-                           booking.status === 'cancelled' ? 'Cancel' : 'Pending'}
+                          <span>
+                            {booking.status === 'confirmed' ? 'Confirm' : 
+                             booking.status === 'cancelled' ? 'Cancel' : 'Pending'}
+                          </span>
+                          <ChevronsUpDown className="w-4 h-4 ml-2 opacity-70" />
                         </button>
                         
                         {openDropdownId === booking.id && (
