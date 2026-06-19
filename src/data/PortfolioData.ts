@@ -12,7 +12,7 @@ export const categories = [
   "Motorized Curtains",
   "Parquet",
   "Roller Blinds",
-  "Roman Curtains",
+  "Romani Curtains",
   "Sheer Curtains",
   "Sofas",
   "Vertical Blinds",
@@ -20,7 +20,7 @@ export const categories = [
   "Chairs"
 ];
 
-const getImage = (id: string) => `https://drive.google.com/thumbnail?id=${id}&sz=w1000`;
+const getImage = (id: string) => `https://drive.google.com/thumbnail?id=${id}&sz=w2000`;
 
 export const portfolioItems: PortfolioItem[] = [
   // Arabic Majlis
@@ -36,19 +36,39 @@ export const portfolioItems: PortfolioItem[] = [
   { id: 9, category: "Carpets", src: getImage("1AkY31bQ6IVxxIrh4NT27XakMbt1rPexT"), title: "Carpets Project" },
 
   // Motorized curtains
-  { id: 10, category: "Motorized Curtains", src: getImage("16_cRoz2J5ZEH69dfdlTitO8WpWQleACa"), title: "Motorized Curtains Project" },
-  { id: 11, category: "Motorized Curtains", src: getImage("1V99rqOAB2npNoEuUwdSfE4xzMDLqG82g"), title: "Motorized Curtains Project" },
-  { id: 12, category: "Motorized Curtains", src: getImage("1kherSx_CRih1kDdkSb0zYFW7k_bAQlKe"), title: "Motorized Curtains Project" },
+  { id: 10, category: "Motorized Curtains", src: getImage("1K1baRIxpH-SJkJFGzj1AFfZwNUIMUIxW"), title: "Motorized Curtains Project" },
+  { id: 11, category: "Motorized Curtains", src: getImage("19skl9FnySqcvt1fuXqgHqBx2apCojYSE"), title: "Motorized Curtains Project" },
+  { id: 12, category: "Motorized Curtains", src: getImage("1t3dpHTcdLzXnbsS6MNAgu3eBdO_f2gku"), title: "Motorized Curtains Project" },
+  { id: 47, category: "Motorized Curtains", src: getImage("1SVnPRIQ9ADZGzMXYGZ8zprMAG2uWPs3F"), title: "Motorized Curtains Project" },
   
   // Parquet
-  { id: 13, category: "Parquet", src: getImage("1jKAHDLNHWydrAeGD_dOl7W9_aCf0-Uzy"), title: "Parquet Project" },
+  { id: 48, category: "Parquet", src: getImage("1SS7RWaiO0S0kfYqJ3FXEr2WzozDxUfl8"), title: "Parquet Project" },
+  { id: 49, category: "Parquet", src: getImage("13tTTyfw5kWa3V2vqcstcxk1Fv5z4DwzU"), title: "Parquet Project" },
+  { id: 50, category: "Parquet", src: getImage("15nn1eSfYF3dc9K7URU5zR3NFJu6uVFWZ"), title: "Parquet Project" },
+  { id: 51, category: "Parquet", src: getImage("1BVDxhIdArpqcFNeZ3_XWEplXE5tRQ4wx"), title: "Parquet Project" },
+  { id: 52, category: "Parquet", src: getImage("1ronmP5F2heIfd6LjzA2ZQYTFkiRqA0H-"), title: "Parquet Project" },
+  { id: 53, category: "Parquet", src: getImage("11TvIPpNn7q98jE6DiA8CmeoUcqj3sdsV"), title: "Parquet Project" },
+  { id: 54, category: "Parquet", src: getImage("12RecMRULJrsuVxS1012Bzx6WhETYDqmz"), title: "Parquet Project" },
+  { id: 55, category: "Parquet", src: getImage("1uTMsNVz0sjVTJA0qW59IT_WxrcZfqNeg"), title: "Parquet Project" },
+  { id: 56, category: "Parquet", src: getImage("1P0J4Yu6atJWC2dRQh5iYzPhzHUkf5qSH"), title: "Parquet Project" },
+  { id: 57, category: "Parquet", src: getImage("1Fxdag4_ZLVNtpYVgQO15d6QOW11ayLzA"), title: "Parquet Project" },
+  { id: 58, category: "Parquet", src: getImage("1NFnKIBpRk5hWkykdBt-T3ys-0lw9lmHA"), title: "Parquet Project" },
+  { id: 59, category: "Parquet", src: getImage("1p5iuP2OiQG1Y5Q0sJBLjTS1zPWtXJdaH"), title: "Parquet Project" },
+  { id: 60, category: "Parquet", src: getImage("1LQfj1GLf2EA2hO-ZDTWWHzIkFn5sZi_5"), title: "Parquet Project" },
+  { id: 61, category: "Parquet", src: getImage("1xOr9nP_WuwoDl19NTYSzqu0wFk-iqFs3"), title: "Parquet Project" },
   
   // Roller Blinds
   { id: 14, category: "Roller Blinds", src: getImage("1t-hKvPKuP__TQ05245yYZF0VLU6fqdfd"), title: "Roller Blinds Project" },
   
-  // Roman Curtains
-  { id: 15, category: "Roman Curtains", src: getImage("1_2y9a9hn879U2V04Px6r4DuLDIKlaRLj"), title: "Roman Curtains Project" },
-  { id: 16, category: "Roman Curtains", src: getImage("1kMh8jKvrPXjlDK4eyhGspIvnSYRi2sJw"), title: "Roman Curtains Project" },
+  // Romani Curtains
+  { id: 62, category: "Romani Curtains", src: getImage("1UCOY4YPE92XBTDZdhRWUVN1rW-UySVIR"), title: "Romani Curtains Project" },
+  { id: 64, category: "Romani Curtains", src: getImage("1VqjGCTw4ytz4YfebTc5GgV_XAmVO0lF5"), title: "Romani Curtains Project" },
+  { id: 63, category: "Romani Curtains", src: getImage("1aD3hOSMAnyI7KdN4OX2X07SvCEJQkBbx"), title: "Romani Curtains Project" },
+  { id: 66, category: "Romani Curtains", src: getImage("1hIAIj056eLGPJPiWCA7hulxOSt9YtSZm"), title: "Romani Curtains Project" },
+  { id: 65, category: "Romani Curtains", src: getImage("1l2Swk_pgSTVY1484FMNCy2HdgOxeDvis"), title: "Romani Curtains Project" },
+  { id: 67, category: "Romani Curtains", src: getImage("1vXHxEEzXHLdCnAkQXOAc2QZVmleY-T0t"), title: "Romani Curtains Project" },
+  { id: 15, category: "Romani Curtains", src: getImage("1_2y9a9hn879U2V04Px6r4DuLDIKlaRLj"), title: "Romani Curtains Project" },
+  { id: 16, category: "Romani Curtains", src: getImage("1kMh8jKvrPXjlDK4eyhGspIvnSYRi2sJw"), title: "Romani Curtains Project" },
   
   // Sheer Curtains
   { id: 17, category: "Sheer Curtains", src: getImage("1m6jhTyPuh2SHkFMRgO0R8umegiOkJ9Qi"), title: "Sheer Curtains Project" },
@@ -73,7 +93,6 @@ export const portfolioItems: PortfolioItem[] = [
   { id: 32, category: "Vertical Blinds", src: getImage("1-OKOjdBhONDg7B4y3HYafkFSpxRQkWRs"), title: "Vertical Blinds Project" },
   
   // Wallpaper
-  { id: 33, category: "Wallpaper", src: getImage("1J2unrsai3YoAPTo6_69FLygZKLbx0IAf"), title: "Wallpaper Project" },
   { id: 34, category: "Wallpaper", src: getImage("1LD7pbOKKOBFixGssP80fHe1peukqJ_uh"), title: "Wallpaper Project" },
   { id: 35, category: "Wallpaper", src: getImage("1OJCRc3d7F7zoQuLbQQgKA-cqWRMBCKAW"), title: "Wallpaper Project" },
   { id: 36, category: "Wallpaper", src: getImage("1x3XY1vYKeEA7i2sO4nNlQH8UXI3YBenR"), title: "Wallpaper Project" },
