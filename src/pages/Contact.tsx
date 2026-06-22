@@ -72,6 +72,21 @@ export default function Contact() {
     
     setIsSubmitting(true);
     try {
+      const formPayload = {
+        access_key: '61552a5a-05ca-49ed-9f38-46da1aeaa039',
+        subject: `New Booking from ${formData.firstName} ${formData.lastName}`,
+        ...formData
+      };
+
+      await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formPayload)
+      });
+
       await addDoc(collection(db, 'bookings'), {
         ...formData,
         userId: user.uid,
@@ -89,9 +104,9 @@ export default function Contact() {
         setSubmitSuccess(false);
       }, 3000);
     } catch (error: any) {
-      console.error('Error adding document: ', error);
+      console.error('Error submitting form: ', error);
       if (error.code === 'permission-denied' || error.message?.includes('Missing or insufficient permissions')) {
-        alert("Firebase Permissions Error: You need to update your Firestore rules in the Firebase Console.\n\nGo to your Firebase project -> Firestore Database -> Rules, and set:\n\nrules_version = '2';\nservice cloud.firestore {\n  match /databases/{database}/documents {\n    match /bookings/{document=**} {\n      allow read, write: if request.auth != null;\n    }\n    match /users/{document=**} {\n      allow read, write: if request.auth != null;\n    }\n  }\n}");
+        alert("Firebase Permissions Error: Please contact support or update Firestore rules.");
       } else {
         alert('Failed to submit booking. Please try again.');
       }
