@@ -1,13 +1,39 @@
 import React, { useState } from 'react';
 import { ArrowRight, X, ZoomIn } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { TranslationKey } from '../locales/translations';
 import { motion, AnimatePresence } from 'motion/react';
 import { categories, portfolioItems, PortfolioItem } from '../data/PortfolioData';
 
+const categoryKeyMap: Record<string, TranslationKey> = {
+  "All": "portfolio.cat.all",
+  "Arabic Majlis": "portfolio.cat.majlis",
+  "Carpets": "portfolio.cat.carpets",
+  "Motorized Curtains": "portfolio.cat.motorized",
+  "Parquet": "portfolio.cat.parquet",
+  "Roller Blinds": "portfolio.cat.roller",
+  "Romani Curtains": "portfolio.cat.romani",
+  "Sheer Curtains": "portfolio.cat.sheer",
+  "Sofas": "portfolio.cat.sofas",
+  "Vertical Blinds": "portfolio.cat.vertical",
+  "Wallpaper": "portfolio.cat.wallpaper",
+  "Chairs": "portfolio.cat.chairs",
+};
+
 export default function Portfolio() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [activeCategory, setActiveCategory] = useState("All");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const getCategoryLabel = (cat: string) => {
+    const key = categoryKeyMap[cat];
+    return key ? t(key) : cat;
+  };
+
+  const getItemTitle = (item: PortfolioItem) => {
+    const catLabel = getCategoryLabel(item.category);
+    return language === 'ar' ? `مشروع ${catLabel}` : `${catLabel} Project`;
+  };
 
   const filteredItems = activeCategory === "All" 
     ? portfolioItems 
@@ -27,7 +53,7 @@ export default function Portfolio() {
             transition={{ duration: 0.8 }}
             className="font-display-lg text-4xl md:text-5xl lg:text-7xl text-white tracking-tight relative inline-block mb-4"
           >
-            Portfolio
+            {t('portfolio.hero.title')}
           </motion.h1>
           <motion.p 
             initial={{ y: 20, opacity: 0 }}
@@ -35,7 +61,7 @@ export default function Portfolio() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="font-body-lg text-gray-300 max-w-[600px] mx-auto text-base md:text-lg font-light"
           >
-            Explore our collection of completed projects
+            {t('portfolio.hero.subtitle')}
           </motion.p>
         </div>
       </header>
@@ -55,7 +81,7 @@ export default function Portfolio() {
                     : 'text-gray-300 hover:text-white hover:bg-black/20'
                   }`}
               >
-                {category}
+                {getCategoryLabel(category)}
               </button>
             ))}
           </div>
@@ -78,7 +104,7 @@ export default function Portfolio() {
                 <div className="aspect-[4/5] overflow-hidden">
                   <img
                     src={item.src}
-                    alt={item.title}
+                    alt={getItemTitle(item)}
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     referrerPolicy="no-referrer"
@@ -88,10 +114,10 @@ export default function Portfolio() {
                 {/* Hover Overlay */}
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                   <span className="font-label-sm text-[#D4AF37] uppercase tracking-widest mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    {item.category}
+                    {getCategoryLabel(item.category)}
                   </span>
                   <div className="flex justify-between items-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
-                    <h3 className="font-headline-md text-white text-xl md:text-2xl">{item.title}</h3>
+                    <h3 className="font-headline-md text-white text-xl md:text-2xl">{getItemTitle(item)}</h3>
                     <ZoomIn className="text-white w-6 h-6" />
                   </div>
                 </div>
@@ -112,23 +138,23 @@ export default function Portfolio() {
           >
             <button
               onClick={closeLightbox}
-              className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors z-50 p-2"
+              className="absolute top-6 right-6 rtl:right-auto rtl:left-6 text-white/50 hover:text-white transition-colors z-50 p-2"
             >
               <X className="w-8 h-8" />
             </button>
             <div className="relative w-full max-w-6xl max-h-full flex items-center justify-center">
               <img
                 src={filteredItems[lightboxIndex].src}
-                alt={filteredItems[lightboxIndex].title}
+                alt={getItemTitle(filteredItems[lightboxIndex])}
                 className="max-w-full max-h-[90vh] object-contain shadow-2xl"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute bottom-4 left-4 lg:bottom-12 lg:left-12 text-left">
+              <div className="absolute bottom-4 left-4 lg:bottom-12 lg:left-12 rtl:left-auto rtl:right-4 rtl:lg:right-12 text-left rtl:text-right">
                  <span className="font-label-sm text-[#ffe088] uppercase tracking-widest drop-shadow-md">
-                    {filteredItems[lightboxIndex].category}
+                    {getCategoryLabel(filteredItems[lightboxIndex].category)}
                  </span>
                  <h3 className="font-headline-md text-white text-3xl drop-shadow-lg mt-1">
-                    {filteredItems[lightboxIndex].title}
+                    {getItemTitle(filteredItems[lightboxIndex])}
                  </h3>
               </div>
             </div>
