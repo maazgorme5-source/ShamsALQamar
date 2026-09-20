@@ -99,7 +99,14 @@ export default function Layout() {
       <nav className={`${navClasses} sticky top-0 z-50 transition-all duration-300 w-full`}>
         <div className="flex justify-between items-center w-full px-8 md:px-16 max-w-container-max mx-auto h-20">
           <Link to="/" className="flex items-center gap-3">
-            <img src="https://drive.google.com/thumbnail?id=10GXvbTwuiqKcWZJA_Csd-hlUurRComAa&sz=w1000" alt="Shams Al Qamar Logo" className="h-[72px] w-auto object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.classList.remove('hidden'); }} />
+            <img 
+              src="/logo.png" 
+              alt="Shams Al Qamar Logo" 
+              className="h-[64px] md:h-[72px] w-auto object-contain" 
+              onError={(e) => { 
+                e.currentTarget.src = "https://drive.google.com/thumbnail?id=10GXvbTwuiqKcWZJA_Csd-hlUurRComAa&sz=w1000";
+              }} 
+            />
             <span className="text-xl font-bold tracking-[0.2em] uppercase text-secondary">
               Shams Al Qamar
             </span>
@@ -293,7 +300,14 @@ export default function Layout() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 px-8 md:px-24 py-20 max-w-container-max mx-auto">
           <div className="md:col-span-1 flex flex-col items-start">
             <div className="flex items-center gap-3 mb-6">
-              <img src="https://drive.google.com/thumbnail?id=10GXvbTwuiqKcWZJA_Csd-hlUurRComAa&sz=w1000" alt="Shams Al Qamar Logo" className="h-[72px] w-auto object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+              <img 
+                src="/logo.png" 
+                alt="Shams Al Qamar Logo" 
+                className="h-[64px] md:h-[72px] w-auto object-contain" 
+                onError={(e) => { 
+                  e.currentTarget.src = "https://drive.google.com/thumbnail?id=10GXvbTwuiqKcWZJA_Csd-hlUurRComAa&sz=w1000";
+                }} 
+              />
               <span className="text-lg font-black text-white tracking-[0.2em] uppercase">Shams Al Qamar</span>
             </div>
             <p className="font-label-sm text-stone-500 leading-relaxed font-normal normal-case tracking-normal">
