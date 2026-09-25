@@ -97,17 +97,17 @@ export default function Layout() {
     <div className="bg-background text-on-background min-h-screen flex flex-col font-body-md selection:bg-secondary/20">
       {/* Navigation */}
       <nav className={`${navClasses} sticky top-0 z-50 transition-all duration-300 w-full`}>
-        <div className="flex justify-between items-center w-full px-8 md:px-16 max-w-container-max mx-auto h-20">
-          <Link to="/" className="flex items-center gap-3">
+        <div className="flex justify-between items-center w-full px-4 sm:px-8 md:px-16 max-w-container-max mx-auto h-20">
+          <Link to="/" className="flex items-center gap-2.5 sm:gap-3 group flex-shrink-0">
             <img 
               src="/logo.png" 
               alt="Shams Al Qamar Logo" 
-              className="h-[64px] md:h-[72px] w-auto object-contain" 
+              className="h-12 sm:h-14 md:h-16 w-auto object-contain flex-shrink-0 transition-transform duration-300 group-hover:scale-105" 
               onError={(e) => { 
-                e.currentTarget.src = "https://drive.google.com/thumbnail?id=10GXvbTwuiqKcWZJA_Csd-hlUurRComAa&sz=w1000";
+                e.currentTarget.src = "/logo-full.png";
               }} 
             />
-            <span className="text-xl font-bold tracking-[0.2em] uppercase text-secondary">
+            <span className="text-sm sm:text-lg md:text-xl font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase text-secondary whitespace-nowrap">
               Shams Al Qamar
             </span>
           </Link>
@@ -303,9 +303,9 @@ export default function Layout() {
               <img 
                 src="/logo.png" 
                 alt="Shams Al Qamar Logo" 
-                className="h-[64px] md:h-[72px] w-auto object-contain" 
+                className="h-12 md:h-16 w-auto object-contain flex-shrink-0" 
                 onError={(e) => { 
-                  e.currentTarget.src = "https://drive.google.com/thumbnail?id=10GXvbTwuiqKcWZJA_Csd-hlUurRComAa&sz=w1000";
+                  e.currentTarget.src = "/logo-full.png";
                 }} 
               />
               <span className="text-lg font-black text-white tracking-[0.2em] uppercase">Shams Al Qamar</span>

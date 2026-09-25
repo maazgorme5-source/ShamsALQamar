@@ -68,7 +68,7 @@ export const portfolioItems: PortfolioItem[] = [
   { id: 65, category: "Romani Curtains", src: getImage("1l2Swk_pgSTVY1484FMNCy2HdgOxeDvis"), title: "Romani Curtains Project" },
   { id: 67, category: "Romani Curtains", src: getImage("1vXHxEEzXHLdCnAkQXOAc2QZVmleY-T0t"), title: "Romani Curtains Project" },
   { id: 15, category: "Romani Curtains", src: getImage("1_2y9a9hn879U2V04Px6r4DuLDIKlaRLj"), title: "Romani Curtains Project" },
-  { id: 16, category: "Romani Curtains", src: getImage("1kMh8jKvrPXjlDK4eyhGspIvnSYRi2sJw"), title: "Romani Curtains Project" },
+  { id: 16, category: "Romani Curtains", src: "/portfolio-hq/item35_hq.jpg", title: "Romani Curtains Project" },
   
   // Sheer Curtains
   { id: 17, category: "Sheer Curtains", src: getImage("1m6jhTyPuh2SHkFMRgO0R8umegiOkJ9Qi"), title: "Sheer Curtains Project" },
@@ -90,10 +90,10 @@ export const portfolioItems: PortfolioItem[] = [
   { id: 31, category: "Sofas", src: getImage("1ZAJVUtjZv5VcuiRiHBrV_HHsmxZutEQP"), title: "Sofas Project" },
   
   // Vertical Blinds
-  { id: 32, category: "Vertical Blinds", src: getImage("1-OKOjdBhONDg7B4y3HYafkFSpxRQkWRs"), title: "Vertical Blinds Project" },
+  { id: 32, category: "Vertical Blinds", src: "/portfolio-hq/item51_hq.jpg", title: "Vertical Blinds Project" },
   
   // Wallpaper
-  { id: 34, category: "Wallpaper", src: getImage("1LD7pbOKKOBFixGssP80fHe1peukqJ_uh"), title: "Wallpaper Project" },
+  { id: 34, category: "Wallpaper", src: getImage("1YLSkGCGGOm-3FDvJFVxjInDOmkSEJfd2"), title: "Wallpaper Project" },
   { id: 35, category: "Wallpaper", src: getImage("1OJCRc3d7F7zoQuLbQQgKA-cqWRMBCKAW"), title: "Wallpaper Project" },
   { id: 36, category: "Wallpaper", src: getImage("1x3XY1vYKeEA7i2sO4nNlQH8UXI3YBenR"), title: "Wallpaper Project" },
   { id: 37, category: "Wallpaper", src: getImage("14e0-xmhlWJ8jKDh_UebRBrj0rTTDP9gP"), title: "Wallpaper Project" },
@@ -101,10 +101,8 @@ export const portfolioItems: PortfolioItem[] = [
   { id: 39, category: "Wallpaper", src: getImage("1pifhL9TWNIK3628rxkLZeZEKhk_4Vd5P"), title: "Wallpaper Project" },
   { id: 40, category: "Wallpaper", src: getImage("1VRScMaGkNWyfx75N5vIAoMeIQMy99Rvq"), title: "Wallpaper Project" },
   { id: 41, category: "Wallpaper", src: getImage("1Rrogj1AsP6Y8Hcl5pplL-BVLRPdoC7pO"), title: "Wallpaper Project" },
-  { id: 42, category: "Wallpaper", src: getImage("1YLSkGCGGOm-3FDvJFVxjInDOmkSEJfd2"), title: "Wallpaper Project" },
-  { id: 43, category: "Wallpaper", src: getImage("12yeG1hp2I2dwxgFf1qWWKAFMuC2QDR6S"), title: "Wallpaper Project" },
-  { id: 44, category: "Wallpaper", src: getImage("1LSU7QLS6QCbxiY6QgZJzVcOWmpQW9mxU"), title: "Wallpaper Project" },
-  { id: 45, category: "Wallpaper", src: getImage("1xwf402dd98-opXHTc8AeQ3-Skr09M1mG"), title: "Wallpaper Project" },
+  { id: 42, category: "Wallpaper", src: getImage("1LD7pbOKKOBFixGssP80fHe1peukqJ_uh"), title: "Wallpaper Project" },
+  { id: 44, category: "Wallpaper", src: "/portfolio-hq/item62_hq.jpg", title: "Wallpaper Project" },
   
   // Chairs
   { id: 46, category: "Chairs", src: getImage("1W3giToAJEZFgrCxGT23--FJZP8VRigWH"), title: "Chairs Project" }

@@ -28,9 +28,11 @@ export const en = {
   "footer.directory": "Directory",
 
   // Home Page
+  "home.hero.live_badge": "Dubai Studio • Active & Accepting Projects",
   "home.hero.title": "Elevating Interiors with Masterful Craftsmanship",
   "home.hero.subtitle": "Masterful upholstery and interior finishes tailored to your space.",
   "home.hero.cta": "Start a Project",
+  "home.hero.scroll": "Scroll to explore",
   
   "home.services.label": "Our Capabilities",
   "home.services.title": "Mastering the Art of Interiors",
@@ -40,15 +42,34 @@ export const en = {
   "home.vision.desc": "To become the go-to brand for premium custom interiors across the UAE, setting the benchmark for timeless luxury and precision.",
   "home.mission.title": "Mission",
   "home.mission.desc": "Deliver high-quality curtains, wallpaper & furniture that blend style with comfort, on time and on budget, through a commitment to exceptional materials.",
+  "home.trust_banner.exp": "15+ Years of Craftsmanship Experience",
+  "home.trust_banner.projects": "250+ Projects Completed",
+  "home.trust_banner.delivery": "UAE-Wide Delivery & Installation",
+  "home.trust_banner.craftsmen": "In-House Craftsmen",
   "home.offerings.title": "Bespoke Offerings",
-  "home.offerings.subtitle": "Curated elements designed to elevate your interiors.",
+  "home.offerings.subtitle": "Every category below is work we’ve completed — not stock photography. See the full portfolio below.",
   "home.offerings.collection": "View Collection",
   "home.offerings.item1": "Curtains",
+  "home.offerings.item1.caption": "Sheer, blackout & motorized — made to measure",
   "home.offerings.item2": "Carpets",
+  "home.offerings.item2.caption": "Hand-selected weaves for every interior style",
   "home.offerings.item3": "Wallpaper",
-  "home.offerings.item4": "Blinds",
+  "home.offerings.item3.caption": "Textured, metallic & custom finishes",
+  "home.offerings.item4": "Motorized Curtains",
+  "home.offerings.item4.caption": "Smart automated tracking, remote & whisper-quiet motors",
   "home.offerings.item5": "Parquet",
+  "home.offerings.item5.caption": "Herringbone & chevron hardwood flooring",
   "home.offerings.item6": "Upholstery",
+  "home.offerings.item6.caption": "Sofa re-covers and new bespoke sofa sets",
+
+  // Featured Projects Section (Recent Work)
+  "home.featured.title": "Recent Work",
+  "home.featured.subtitle": "A few projects from across Dubai and the UAE.",
+  "home.featured.cta": "View Full Portfolio",
+  "home.featured.card1.label": "Arabic Majlis — Dubai",
+  "home.featured.card2.label": "Sofa Upholstery — Sharjah",
+  "home.featured.card3.label": "Sheer Curtains — Dubai",
+  "home.featured.card4.label": "Vertical Blinds — Dubai",
 
   // Services Page
   "services.header.title": "Bespoke Services",

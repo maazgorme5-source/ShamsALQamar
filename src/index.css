@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&family=Cairo:wght@400;700&display=swap');
+@import "tailwindcss";
 
 @theme {
   --color-primary: #000000;
@@ -46,6 +46,9 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   :root[dir="rtl"] {
     font-family: 'Cairo', sans-serif !important;
   }

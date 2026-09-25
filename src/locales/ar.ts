@@ -28,9 +28,11 @@ export const ar = {
   "footer.directory": "دليل الاتصال",
 
   // Home Page
+  "home.hero.live_badge": "استوديو دبي • متاح ونستقبل المشاريع الآن",
   "home.hero.title": "الارتقاء بالتصميم الداخلي بمهارة استثنائية",
   "home.hero.subtitle": "تنجيد متقن وتشطيبات داخلية مصممة خصيصاً لمساحتك.",
   "home.hero.cta": "ابدأ مشروعك",
+  "home.hero.scroll": "مرر للأسفل للاستكشاف",
 
   "home.services.label": "قدراتنا",
   "home.services.title": "إتقان فن التصميم الداخلي",
@@ -40,15 +42,34 @@ export const ar = {
   "home.vision.desc": "أن نصبح العلامة التجارية الأولى للتصميم الداخلي المخصص الفاخر في جميع أنحاء الإمارات العربية المتحدة، مع وضع معيار للرفاهية الدائمة والدقة.",
   "home.mission.title": "مهمتنا",
   "home.mission.desc": "تقديم ستائر وورق جدران وأثاث عالي الجودة يجمع بين الأناقة والراحة، في الوقت المحدد وفي حدود الميزانية، من خلال الالتزام بمواد استثنائية.",
+  "home.trust_banner.exp": "+15 عاماً من الخبرة الحرفية",
+  "home.trust_banner.projects": "+250 مشروعاً مُنجزاً",
+  "home.trust_banner.delivery": "توصيل وتركيب لكافة أنحاء الإمارات",
+  "home.trust_banner.craftsmen": "حرفيون داخليون متخصصون",
   "home.offerings.title": "عروض مخصصة",
-  "home.offerings.subtitle": "عناصر منسقة مصممة للارتقاء بالتصميم الداخلي لمساحتك.",
+  "home.offerings.subtitle": "كل فئة أدناه هي من أعمالنا الحقيقية المنجزة — وليست صوراً جاهزة. شاهد معرض أعمالنا الكامل أدناه.",
   "home.offerings.collection": "عرض المجموعة",
   "home.offerings.item1": "ستائر",
+  "home.offerings.item1.caption": "شيفون، بلاك أوت وكهربائية بمحرك — تفصيل حسب المقاس",
   "home.offerings.item2": "سجاد",
+  "home.offerings.item2.caption": "نسيج منتقى يدوياً يناسب كافة أساليب الديكور",
   "home.offerings.item3": "ورق جدران",
-  "home.offerings.item4": "ستائر رأسية ورول",
+  "home.offerings.item3.caption": "تشطيبات بارزة الملمس ومعدنية ومخصصة",
+  "home.offerings.item4": "ستائر كهربائية ذكية",
+  "home.offerings.item4.caption": "أنظمة تحكم ذكية، محركات صامتة وتكامل مع المنازل الذكية",
   "home.offerings.item5": "باركيه",
+  "home.offerings.item5.caption": "أرضيات خشبية بنقشات عظم السمكة والشفرون",
   "home.offerings.item6": "تنجيد",
+  "home.offerings.item6.caption": "تجديد تنجيد الكنب وأطقم كنب جديدة مخصصة",
+
+  // Featured Projects Section (Recent Work)
+  "home.featured.title": "أحدث أعمالنا",
+  "home.featured.subtitle": "مختارات من مشاريعنا المنفذة في دبي وجميع أنحاء الإمارات.",
+  "home.featured.cta": "عرض معرض الأعمال بالكامل",
+  "home.featured.card1.label": "مجلس عربي ملكي — دبي",
+  "home.featured.card2.label": "تنجيد كنب فاخر — الشارقة",
+  "home.featured.card3.label": "ستائر شيفون فاخرة — دبي",
+  "home.featured.card4.label": "ستائر رأسية عصرية — دبي",
 
   // Services Page
   "services.header.title": "خدمات مخصصة",

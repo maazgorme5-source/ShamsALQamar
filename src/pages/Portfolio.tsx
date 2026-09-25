@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight, X, ZoomIn } from 'lucide-react';
+import { useSearchParams } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { TranslationKey } from '../locales/translations';
 import { motion, AnimatePresence } from 'motion/react';
@@ -7,23 +8,49 @@ import { categories, portfolioItems, PortfolioItem } from '../data/PortfolioData
 
 const categoryKeyMap: Record<string, TranslationKey> = {
   "All": "portfolio.cat.all",
+  "Curtains": "home.offerings.item1",
+  "Carpets": "home.offerings.item2",
+  "Wallpaper": "home.offerings.item3",
+  "Blinds": "home.offerings.item4",
+  "Parquet": "home.offerings.item5",
+  "Upholstery": "home.offerings.item6",
   "Arabic Majlis": "portfolio.cat.majlis",
-  "Carpets": "portfolio.cat.carpets",
   "Motorized Curtains": "portfolio.cat.motorized",
-  "Parquet": "portfolio.cat.parquet",
   "Roller Blinds": "portfolio.cat.roller",
   "Romani Curtains": "portfolio.cat.romani",
   "Sheer Curtains": "portfolio.cat.sheer",
   "Sofas": "portfolio.cat.sofas",
   "Vertical Blinds": "portfolio.cat.vertical",
-  "Wallpaper": "portfolio.cat.wallpaper",
   "Chairs": "portfolio.cat.chairs",
 };
 
 export default function Portfolio() {
   const { t, language } = useLanguage();
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const categoryParam = searchParams.get('category');
+  
+  const [activeCategory, setActiveCategory] = useState<string>(() => categoryParam || "All");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (categoryParam) {
+      setActiveCategory(categoryParam);
+      // Smooth scroll to portfolio section if loaded with category
+      setTimeout(() => {
+        document.getElementById('portfolio-grid')?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  }, [categoryParam]);
+
+  const handleCategoryChange = (cat: string) => {
+    setActiveCategory(cat);
+    if (cat === "All") {
+      searchParams.delete('category');
+      setSearchParams(searchParams);
+    } else {
+      setSearchParams({ category: cat });
+    }
+  };
 
   const getCategoryLabel = (cat: string) => {
     const key = categoryKeyMap[cat];
@@ -35,12 +62,28 @@ export default function Portfolio() {
     return language === 'ar' ? `مشروع ${catLabel}` : `${catLabel} Project`;
   };
 
-  const filteredItems = activeCategory === "All" 
-    ? portfolioItems 
-    : portfolioItems.filter(item => item.category === activeCategory);
+  const isItemMatching = (item: PortfolioItem, filter: string) => {
+    if (filter === "All") return true;
+    if (filter === "Curtains") {
+      return item.category.toLowerCase().includes("curtain");
+    }
+    if (filter === "Blinds") {
+      return item.category.toLowerCase().includes("blind");
+    }
+    if (filter === "Upholstery") {
+      return item.category === "Sofas" || item.category === "Arabic Majlis" || item.category === "Chairs";
+    }
+    return item.category === filter;
+  };
+
+  const filteredItems = portfolioItems.filter(item => isItemMatching(item, activeCategory));
 
   const openLightbox = (index: number) => setLightboxIndex(index);
   const closeLightbox = () => setLightboxIndex(null);
+
+  const filterTabs = categories.includes(activeCategory)
+    ? categories
+    : [categories[0], activeCategory, ...categories.slice(1)];
 
   return (
     <div className="bg-[#0B0B0B] min-h-screen text-white">
@@ -66,18 +109,18 @@ export default function Portfolio() {
         </div>
       </header>
 
-      <main className="max-w-container-max mx-auto px-4 md:px-8 lg:px-12 pt-2 pb-24">
+      <main id="portfolio-grid" className="max-w-container-max mx-auto px-4 md:px-8 lg:px-12 pt-2 pb-24">
         
         {/* Category Filters */}
         <div className="flex justify-center mb-12 px-4 w-full">
           <div className="flex flex-wrap justify-center gap-2 p-1.5 bg-[#221f1d] rounded-xl max-w-full">
-            {categories.map((category) => (
+            {filterTabs.map((category) => (
               <button
                 key={category}
-                onClick={() => setActiveCategory(category)}
+                onClick={() => handleCategoryChange(category)}
                 className={`font-body-md text-sm px-5 py-2.5 transition-all duration-300 rounded-lg font-semibold whitespace-nowrap
                   ${activeCategory === category 
-                    ? 'bg-[#000000] text-white shadow-md' 
+                    ? 'bg-[#000000] text-[#ffe088] shadow-md border border-[#ffe088]/40' 
                     : 'text-gray-300 hover:text-white hover:bg-black/20'
                   }`}
               >
@@ -101,13 +144,21 @@ export default function Portfolio() {
                 className="relative group overflow-hidden border border-[#333] rounded-xl cursor-pointer bg-black"
                 onClick={() => openLightbox(idx)}
               >
-                <div className="aspect-[4/5] overflow-hidden">
+                <div className="aspect-[4/5] overflow-hidden bg-neutral-900">
                   <img
                     src={item.src}
                     alt={getItemTitle(item)}
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      if (!target.dataset.triedFallback) {
+                        target.dataset.triedFallback = 'true';
+                        // Fallback to high-res Google Drive project image
+                        target.src = 'https://drive.google.com/thumbnail?id=1YLSkGCGGOm-3FDvJFVxjInDOmkSEJfd2&sz=w2000';
+                      }
+                    }}
                   />
                 </div>
                 
@@ -148,6 +199,13 @@ export default function Portfolio() {
                 alt={getItemTitle(filteredItems[lightboxIndex])}
                 className="max-w-full max-h-[90vh] object-contain shadow-2xl"
                 referrerPolicy="no-referrer"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (!target.dataset.triedFallback) {
+                    target.dataset.triedFallback = 'true';
+                    target.src = 'https://drive.google.com/thumbnail?id=1YLSkGCGGOm-3FDvJFVxjInDOmkSEJfd2&sz=w2000';
+                  }
+                }}
               />
               <div className="absolute bottom-4 left-4 lg:bottom-12 lg:left-12 rtl:left-auto rtl:right-4 rtl:lg:right-12 text-left rtl:text-right">
                  <span className="font-label-sm text-[#ffe088] uppercase tracking-widest drop-shadow-md">
